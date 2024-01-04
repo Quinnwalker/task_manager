@@ -1,6 +1,7 @@
 const taskManager = document.getElementById('task-manager');
 const taskForm = document.createElement('form');
 const taskInput = document.createElement('input');
+const taskListContainer = document.createElement('div');
 const taskList = document.createElement('ul');
 
 taskForm.innerHTML = `
@@ -14,10 +15,11 @@ taskForm.addEventListener('submit', function (event) {
     addTask(taskInput.value);
 });
 
-taskList.innerHTML = '<h2>Task List</h2>';
+taskListContainer.appendChild(taskList); // Place the taskList inside a container
+taskListContainer.innerHTML = '<h2>Task List</h2>';
 
 taskManager.appendChild(taskForm);
-taskManager.appendChild(taskList);
+taskManager.appendChild(taskListContainer); // Append the container, not the taskList directly
 
 function addTask(taskText) {
     const taskItem = document.createElement('li');
